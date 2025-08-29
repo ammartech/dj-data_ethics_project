@@ -226,7 +226,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Ammar Yasser Elbedwehy**  
 - Email: [elbedwehyammar93@gmail.com](mailto:elbedwehyammar93@gmail.com)  
 - LinkedIn: [Ammar Elbedwehy](https://www.linkedin.com/in/ammar-elbedwehy2000/)  
-- GitHub: [@ammar-elbedwehy](https://github.com/ammar-elbedwehy)  
+- GitHub: [@ammar-elbedwehy]([https://github.com/ammartech/])  
 
 ---
 
