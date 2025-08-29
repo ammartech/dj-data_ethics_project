@@ -1,0 +1,345 @@
+<!-- templates/ethics_app/consent_management.html -->
+{% extends 'ethics_app/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Cookie Settings - Data Ethics Portal" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="consent-header text-center mb-5">
+                <h1 class="display-4 fw-bold">
+                    <i class="fas fa-cogs text-primary me-3"></i>
+                    {% trans "Cookie & Privacy Settings" %}
+                </h1>
+                <p class="lead text-muted">
+                    {% trans "Manage your privacy preferences and control how your data is used." %}
+                </p>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    {% trans "Your choices are saved automatically and will be remembered for future visits." %}
+                </div>
+            </div>
+            
+            <div class="consent-form-container bg-light p-4 rounded-3">
+                <form method="post" class="consent-form">
+                    {% csrf_token %}
+                    
+                    <!-- Essential Cookies -->
+                    <div class="consent-item mb-4 p-4 bg-white rounded shadow-sm">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="consent-info flex-grow-1">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-cog text-secondary me-2"></i>
+                                    {% trans "Essential Cookies" %}
+                                    <span class="badge bg-success ms-2">{% trans "Required" %}</span>
+                                </h5>
+                                <p class="text-muted mb-3">
+                                    {% trans "These cookies are necessary for the website to function and cannot be switched off in our systems. They are usually only set in response to actions made by you which amount to a request for services." %}
+                                </p>
+                                <div class="examples">
+                                    <h6 class="small fw-bold text-secondary">{% trans "Examples:" %}</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-check text-success me-1"></i>{% trans "Authentication cookies" %}</li>
+                                                <li><i class="fas fa-check text-success me-1"></i>{% trans "Security tokens" %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-check text-success me-1"></i>{% trans "Language preferences" %}</li>
+                                                <li><i class="fas fa-check text-success me-1"></i>{% trans "Session management" %}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="consent-toggle ms-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" checked disabled>
+                                    <label class="form-check-label text-muted">{% trans "Always Active" %}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Functional Cookies -->
+                    <div class="consent-item mb-4 p-4 bg-white rounded shadow-sm">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="consent-info flex-grow-1">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-toggle-on text-primary me-2"></i>
+                                    {% trans "Functional Cookies" %}
+                                    <span class="badge bg-primary ms-2">{% trans "Optional" %}</span>
+                                </h5>
+                                <p class="text-muted mb-3">
+                                    {% trans "These cookies enable enhanced functionality and personalization. They may be set by us or by third-party providers whose services we have added to our pages." %}
+                                </p>
+                                <div class="examples">
+                                    <h6 class="small fw-bold text-secondary">{% trans "Examples:" %}</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-check text-primary me-1"></i>{% trans "User preferences" %}</li>
+                                                <li><i class="fas fa-check text-primary me-1"></i>{% trans "Chat widgets" %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-check text-primary me-1"></i>{% trans "Social media features" %}</li>
+                                                <li><i class="fas fa-check text-primary me-1"></i>{% trans "Enhanced navigation" %}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="consent-toggle ms-3">
+                                <div class="form-check form-switch">
+                                    {{ form.functional_cookies }}
+                                    <label class="form-check-label">{% trans "Enable" %}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Analytics Cookies -->
+                    <div class="consent-item mb-4 p-4 bg-white rounded shadow-sm">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="consent-info flex-grow-1">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-chart-line text-success me-2"></i>
+                                    {% trans "Analytics Cookies" %}
+                                    <span class="badge bg-success ms-2">{% trans "Optional" %}</span>
+                                </h5>
+                                <p class="text-muted mb-3">
+                                    {% trans "These cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This helps us improve our website functionality." %}
+                                </p>
+                                <div class="examples">
+                                    <h6 class="small fw-bold text-secondary">{% trans "Examples:" %}</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-chart-bar text-success me-1"></i>{% trans "Google Analytics" %}</li>
+                                                <li><i class="fas fa-chart-bar text-success me-1"></i>{% trans "Heatmap tracking" %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-chart-bar text-success me-1"></i>{% trans "User behavior analysis" %}</li>
+                                                <li><i class="fas fa-chart-bar text-success me-1"></i>{% trans "Performance monitoring" %}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-light mt-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-shield-alt me-1"></i>
+                                        {% trans "All analytics data is anonymized and cannot be used to identify individual users." %}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="consent-toggle ms-3">
+                                <div class="form-check form-switch">
+                                    {{ form.analytics_cookies }}
+                                    <label class="form-check-label">{% trans "Enable" %}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Marketing Cookies -->
+                    <div class="consent-item mb-4 p-4 bg-white rounded shadow-sm">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div class="consent-info flex-grow-1">
+                                <h5 class="fw-bold">
+                                    <i class="fas fa-bullhorn text-warning me-2"></i>
+                                    {% trans "Marketing Cookies" %}
+                                    <span class="badge bg-warning ms-2">{% trans "Optional" %}</span>
+                                </h5>
+                                <p class="text-muted mb-3">
+                                    {% trans "These cookies are used to deliver advertisements that are more relevant to you and your interests. They may also be used to limit the number of times you see an advertisement." %}
+                                </p>
+                                <div class="examples">
+                                    <h6 class="small fw-bold text-secondary">{% trans "Examples:" %}</h6>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-ad text-warning me-1"></i>{% trans "Ad targeting" %}</li>
+                                                <li><i class="fas fa-ad text-warning me-1"></i>{% trans "Social media advertising" %}</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled small text-muted">
+                                                <li><i class="fas fa-ad text-warning me-1"></i>{% trans "Retargeting campaigns" %}</li>
+                                                <li><i class="fas fa-ad text-warning me-1"></i>{% trans "Conversion tracking" %}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-light mt-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-info-circle me-1"></i>
+                                        {% trans "You can opt out of marketing cookies at any time without affecting website functionality." %}
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="consent-toggle ms-3">
+                                <div class="form-check form-switch">
+                                    {{ form.marketing_cookies }}
+                                    <label class="form-check-label">{% trans "Enable" %}</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="consent-actions d-flex gap-3 justify-content-center mt-5">
+                        <button type="button" class="btn btn-outline-danger" onclick="rejectAll()">
+                            <i class="fas fa-times me-2"></i>{% trans "Reject All Optional" %}
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save me-2"></i>{% trans "Save My Preferences" %}
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="acceptAll()">
+                            <i class="fas fa-check me-2"></i>{% trans "Accept All" %}
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Current Settings Display -->
+                {% if current_consents %}
+                <div class="current-settings mt-5 p-4 bg-info bg-opacity-10 rounded shadow-sm">
+                    <h6 class="fw-bold">
+                        <i class="fas fa-info-circle text-info me-2"></i>
+                        {% trans "Your Current Settings" %}
+                    </h6>
+                    <p class="small text-muted mb-3">{% trans "Last updated: " %}{% now "F d, Y H:i" %}</p>
+                    <div class="row">
+                        {% for consent_type, is_given in current_consents.items %}
+                        <div class="col-md-6 mb-2">
+                            <span class="badge {% if is_given %}bg-success{% else %}bg-secondary{% endif %} p-2">
+                                <i class="fas {% if is_given %}fa-check{% else %}fa-times{% endif %} me-1"></i>
+                                {{ consent_type|title }}: {% if is_given %}{% trans "Enabled" %}{% else %}{% trans "Disabled" %}{% endif %}
+                            </span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Additional Information -->
+                <div class="additional-info mt-5">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="info-card p-4 bg-white rounded shadow-sm text-center">
+                                <i class="fas fa-clock fa-2x text-primary mb-3"></i>
+                                <h5>{% trans "Consent Duration" %}</h5>
+                                <p class="text-muted">{% trans "Your preferences are valid for 12 months. We'll ask for renewed consent after this period." %}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-card p-4 bg-white rounded shadow-sm text-center">
+                                <i class="fas fa-undo fa-2x text-success mb-3"></i>
+                                <h5>{% trans "Change Anytime" %}</h5>
+                                <p class="text-muted">{% trans "You can modify your cookie preferences at any time by returning to this page." %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Legal Information -->
+                <div class="legal-info mt-5 p-4 bg-light rounded">
+                    <h6 class="fw-bold">{% trans "Legal Information" %}</h6>
+                    <p class="small text-muted mb-2">
+                        {% trans "This consent management system complies with:" %}
+                    </p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check text-success me-1"></i>{% trans "EU General Data Protection Regulation (GDPR)" %}</li>
+                                <li><i class="fas fa-check text-success me-1"></i>{% trans "ePrivacy Directive (Cookie Law)" %}</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled small">
+                                <li><i class="fas fa-check text-success me-1"></i>{% trans "California Consumer Privacy Act (CCPA)" %}</li>
+                                <li><i class="fas fa-check text-success me-1"></i>{% trans "UK Data Protection Act 2018" %}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function acceptAll() {
+    // Enable all optional cookie toggles
+    document.querySelectorAll('input[type="checkbox"]:not([disabled])').forEach(checkbox => {
+        checkbox.checked = true;
+    });
+    
+    // Show confirmation
+    showNotification('{% trans "All cookies enabled" %}', 'success');
+    
+    // Submit form
+    document.querySelector('.consent-form').submit();
+}
+
+function rejectAll() {
+    // Disable all optional cookie toggles
+    document.querySelectorAll('input[type="checkbox"]:not([disabled])').forEach(checkbox => {
+        checkbox.checked = false;
+    });
+    
+    // Show confirmation
+    showNotification('{% trans "Only essential cookies will be used" %}', 'info');
+    
+    // Submit form
+    document.querySelector('.consent-form').submit();
+}
+
+function showNotification(message, type) {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `alert alert-${type} alert-dismissible fade show position-fixed`;
+    notification.style.cssText = `
+        top: 20px;
+        right: 20px;
+        z-index: 1060;
+        min-width: 300px;
+        max-width: 400px;
+    `;
+    
+    notification.innerHTML = `
+        <i class="fas fa-info-circle me-2"></i>${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto remove after 3 seconds
+    setTimeout(() => {
+        if (notification && notification.parentNode) {
+            notification.remove();
+        }
+    }, 3000);
+}
+
+// Initialize tooltips for help text
+document.addEventListener('DOMContentLoaded', function() {
+    // Add smooth scrolling to action buttons
+    document.querySelector('.consent-actions').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,517 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-29 12:05+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+#: ethics_app/forms.py:11 ethics_app/templates/ethics_app/base.html:494
+msgid "Functional Cookies"
+msgstr ""
+
+#: ethics_app/forms.py:12
+msgid "Required for website functionality"
+msgstr ""
+
+#: ethics_app/forms.py:16 ethics_app/templates/ethics_app/base.html:517
+msgid "Analytics Cookies"
+msgstr ""
+
+#: ethics_app/forms.py:17
+msgid "Help us improve our website"
+msgstr ""
+
+#: ethics_app/forms.py:21 ethics_app/templates/ethics_app/base.html:540
+msgid "Marketing Cookies"
+msgstr ""
+
+#: ethics_app/forms.py:22
+msgid "For personalized advertising"
+msgstr ""
+
+#: ethics_app/forms.py:33 ethics_app/templates/ethics_app/base.html:563
+msgid "Save Preferences"
+msgstr ""
+
+#: ethics_app/forms.py:55 ethics_app/templates/ethics_app/base.html:737
+msgid "Submit Request"
+msgstr ""
+
+#: ethics_app/forms.py:59
+msgid "Analytics"
+msgstr ""
+
+#: ethics_app/forms.py:60
+msgid "Marketing"
+msgstr ""
+
+#: ethics_app/forms.py:61
+msgid "Functional"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:9
+#: ethics_app/templates/ethics_app/base.html:71
+#: ethics_app/templates/ethics_app/base.html:151
+msgid "Data Ethics Portal"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:82
+msgid "Home"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:87
+#: ethics_app/templates/ethics_app/base.html:160
+#: ethics_app/templates/ethics_app/base.html:380
+msgid "Privacy Policy"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:92
+#: ethics_app/templates/ethics_app/base.html:163
+msgid "Cookie Settings"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:97
+#: ethics_app/templates/ethics_app/base.html:166
+msgid "Data Rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:112
+msgid ""
+"We use cookies to enhance your browsing experience and analyze our traffic. "
+"By clicking 'Accept All', you consent to our use of cookies."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:117
+msgid "Settings"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:120
+msgid "Essential Only"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:123
+#: ethics_app/templates/ethics_app/base.html:566
+msgid "Accept All"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:153
+msgid ""
+"Committed to protecting your privacy and ensuring ethical data practices."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:157
+msgid "Quick Links"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:176
+msgid "Data Ethics Portal. All rights reserved."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:205
+msgid "Home - Data Ethics Portal"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:215
+msgid "Your Data, Your Rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:218
+msgid ""
+"We're committed to protecting your privacy and ensuring ethical data "
+"practices. Take control of your digital footprint with our comprehensive "
+"data protection tools."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:222
+msgid "Manage Preferences"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:225
+msgid "Exercise Rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:244
+msgid "Data Protection Features"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:246
+msgid "Comprehensive tools to manage your data privacy and rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:258
+msgid "GDPR Compliant"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:260
+msgid ""
+"Full compliance with European data protection regulations and global privacy "
+"standards."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:271
+msgid "Consent Management"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:273
+msgid ""
+"Granular control over cookies and data processing with easy-to-use "
+"preference center."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:284
+msgid "Data Subject Rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:286
+msgid ""
+"Exercise your rights to access, rectify, erase, or port your personal data."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:297
+msgid "Advanced Security"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:299
+msgid "State-of-the-art encryption and security measures to protect your data."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:310
+msgid "Transparency"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:312
+msgid ""
+"Clear information about how your data is collected, used, and protected."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:323
+msgid "Multi-language Support"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:325
+msgid ""
+"Available in multiple languages including Arabic, English, French, and "
+"Turkish."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:340
+msgid "Uptime Guarantee"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:346
+msgid "SSL Encryption"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:352
+msgid "Data Protection"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:358
+msgid "Languages Supported"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:371
+msgid "Privacy Policy - Data Ethics Portal"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:383
+msgid "Last updated: "
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:396
+msgid "Information We Collect"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:397
+msgid ""
+"We collect information you provide directly to us, information we collect "
+"automatically when you use our services, and information from third parties."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:399
+msgid "Personal Information"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:401
+msgid "Name and contact information"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:402
+msgid "Account credentials"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:403
+msgid "Communications with us"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:406
+msgid "Automatically Collected Information"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:408
+msgid "Device and browser information"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:409
+msgid "Usage patterns and preferences"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:410
+msgid "IP address and location data"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:415
+msgid "How We Use Your Information"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:416
+msgid ""
+"We use your information to provide, maintain, and improve our services, "
+"communicate with you, and comply with legal obligations."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:420
+msgid "Information Sharing"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:421
+msgid ""
+"We do not sell your personal information. We may share information in "
+"limited circumstances as described in this policy."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:425
+msgid "Your Rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:426
+msgid ""
+"You have rights regarding your personal information, including access, "
+"rectification, erasure, and portability."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:428
+msgid "Exercise Your Rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:444
+msgid "Cookie Settings - Data Ethics Portal"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:453
+msgid "Cookie & Privacy Settings"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:456
+msgid "Manage your privacy preferences and control how your data is used."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:470
+msgid "Essential Cookies"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:473
+msgid ""
+"These cookies are necessary for the website to function and cannot be "
+"switched off."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:476
+msgid "Examples: Authentication, security, language preferences"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:482
+msgid "Always Active"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:497
+msgid "These cookies enable enhanced functionality and personalization."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:500
+msgid "Examples: Preferences, chat widgets, social media features"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:520
+msgid ""
+"These cookies help us understand how visitors interact with our website."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:523
+msgid "Examples: Google Analytics, heatmaps, user behavior tracking"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:543
+msgid "These cookies are used to deliver personalized advertisements."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:546
+msgid "Examples: Ad targeting, social media advertising, retargeting"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:560
+msgid "Reject All"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:576
+msgid "Current Settings"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:582
+msgid "Enabled"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:582
+msgid "Disabled"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:619
+msgid "Data Subject Rights - Data Ethics Portal"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:628
+msgid "Exercise Your Data Rights"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:631
+msgid ""
+"Under GDPR and other privacy regulations, you have rights regarding your "
+"personal data."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:638
+msgid ""
+"Your request has been submitted successfully. We will respond within 30 days."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:648
+msgid "Right to Access"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:650
+msgid "Request a copy of the personal data we hold about you."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:656
+msgid "Right to Rectification"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:658
+msgid "Request correction of inaccurate or incomplete data."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:664
+msgid "Right to Erasure"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:666
+msgid "Request deletion of your personal data under certain conditions."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:672
+msgid "Right to Portability"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:674
+msgid "Receive your data in a structured, machine-readable format."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:685
+msgid "Submit a Data Request"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:694
+msgid "Request Type"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:701
+msgid "Email Address"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:708
+msgid "Full Name"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:715
+msgid "Request Description"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:719
+msgid ""
+"Please provide detailed information about your request to help us process it "
+"efficiently."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:731
+msgid "Important:"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:732
+msgid ""
+"We will respond to your request within 30 days. For security purposes, we "
+"may need to verify your identity before processing your request."
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:745
+msgid "Processing Timeline"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:752
+msgid "Request Received"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:753
+msgid "We acknowledge receipt within 24 hours"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:761
+msgid "Identity Verification"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:762
+msgid "Security verification process (1-3 days)"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:770
+msgid "Processing"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:771
+msgid "Request processing and data compilation"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:779
+msgid "Response"
+msgstr ""
+
+#: ethics_app/templates/ethics_app/base.html:780
+msgid "Final response delivered (within 30 days)"
+msgstr ""
+
+#: ethics_app/views.py:65
+msgid "Consent preferences updated successfully."
+msgstr ""
+
+#: ethics_app/views.py:119
+msgid "Data Subject Request Confirmation"
+msgstr ""
+
+#: ethics_app/views.py:120
+msgid "Your request has been received and will be processed within 30 days."
+msgstr ""
+
+#: ethics_app/views.py:128
+msgid "Your request has been submitted successfully."
+msgstr ""

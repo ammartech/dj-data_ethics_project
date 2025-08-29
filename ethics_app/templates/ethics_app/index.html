@@ -1,0 +1,376 @@
+<!-- templates/ethics_app/index.html -->
+{% extends 'ethics_app/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Home - Data Ethics Portal" %}{% endblock %}
+
+{% block content %}
+<div class="hero-section">
+    <div class="container py-5">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-shield-alt text-primary me-3"></i>
+                        {% trans "Your Data, Your Rights" %}
+                    </h1>
+                    <p class="lead mb-4 text-muted">
+                        {% trans "We're committed to protecting your privacy and ensuring ethical data practices. Take control of your digital footprint with our comprehensive data protection tools." %}
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="{% url 'consent_management' %}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-cogs me-2"></i>{% trans "Manage Preferences" %}
+                        </a>
+                        <a href="{% url 'data_request' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-user-shield me-2"></i>{% trans "Exercise Rights" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image text-center">
+                    <i class="fas fa-lock display-1 text-primary opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<section class="features-section py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold">{% trans "Data Protection Features" %}</h2>
+                <p class="lead text-muted">
+                    {% trans "Comprehensive tools to manage your data privacy and rights" %}
+                </p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- GDPR Compliance -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100 p-4 bg-white rounded-3 shadow-sm">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-gavel fa-3x text-primary"></i>
+                    </div>
+                    <h4>{% trans "GDPR Compliant" %}</h4>
+                    <p class="text-muted">
+                        {% trans "Full compliance with European data protection regulations and global privacy standards." %}
+                    </p>
+                    <div class="mt-auto">
+                        <ul class="list-unstyled small text-muted">
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Legal basis documentation" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Data processing records" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Breach notification system" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Consent Management -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100 p-4 bg-white rounded-3 shadow-sm">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-toggle-on fa-3x text-success"></i>
+                    </div>
+                    <h4>{% trans "Consent Management" %}</h4>
+                    <p class="text-muted">
+                        {% trans "Granular control over cookies and data processing with easy-to-use preference center." %}
+                    </p>
+                    <div class="mt-auto">
+                        <ul class="list-unstyled small text-muted">
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Cookie categorization" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Consent withdrawal" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Audit trail maintenance" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Rights -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100 p-4 bg-white rounded-3 shadow-sm">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-user-shield fa-3x text-info"></i>
+                    </div>
+                    <h4>{% trans "Data Subject Rights" %}</h4>
+                    <p class="text-muted">
+                        {% trans "Exercise your rights to access, rectify, erase, or port your personal data." %}
+                    </p>
+                    <div class="mt-auto">
+                        <ul class="list-unstyled small text-muted">
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Data access requests" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Right to be forgotten" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Data portability" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100 p-4 bg-white rounded-3 shadow-sm">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-lock fa-3x text-warning"></i>
+                    </div>
+                    <h4>{% trans "Advanced Security" %}</h4>
+                    <p class="text-muted">
+                        {% trans "State-of-the-art encryption and security measures to protect your data." %}
+                    </p>
+                    <div class="mt-auto">
+                        <ul class="list-unstyled small text-muted">
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "End-to-end encryption" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Secure data transmission" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Regular security audits" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transparency -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100 p-4 bg-white rounded-3 shadow-sm">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-eye fa-3x text-secondary"></i>
+                    </div>
+                    <h4>{% trans "Transparency" %}</h4>
+                    <p class="text-muted">
+                        {% trans "Clear information about how your data is collected, used, and protected." %}
+                    </p>
+                    <div class="mt-auto">
+                        <ul class="list-unstyled small text-muted">
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Clear privacy notices" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Data usage explanations" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Regular transparency reports" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Multi-language -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card h-100 p-4 bg-white rounded-3 shadow-sm">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-globe fa-3x text-danger"></i>
+                    </div>
+                    <h4>{% trans "Multi-language Support" %}</h4>
+                    <p class="text-muted">
+                        {% trans "Available in multiple languages including Arabic, English, French, and Turkish." %}
+                    </p>
+                    <div class="mt-auto">
+                        <ul class="list-unstyled small text-muted">
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "RTL language support" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Cultural localization" %}</li>
+                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Legal compliance per region" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Indicators Section -->
+<section class="trust-section py-5">
+    <div class="container">
+        <div class="row text-center mb-4">
+            <div class="col-12">
+                <h3 class="fw-bold mb-4">{% trans "Trusted by Organizations Worldwide" %}</h3>
+            </div>
+        </div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                <div class="trust-badge p-3 text-center">
+                    <i class="fas fa-certificate fa-2x text-primary mb-2"></i>
+                    <small class="d-block">{% trans "ISO 27001" %}<br>{% trans "Certified" %}</small>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                <div class="trust-badge p-3 text-center">
+                    <i class="fas fa-shield-alt fa-2x text-success mb-2"></i>
+                    <small class="d-block">{% trans "SOC 2" %}<br>{% trans "Compliant" %}</small>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                <div class="trust-badge p-3 text-center">
+                    <i class="fas fa-balance-scale fa-2x text-info mb-2"></i>
+                    <small class="d-block">{% trans "GDPR" %}<br>{% trans "Ready" %}</small>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                <div class="trust-badge p-3 text-center">
+                    <i class="fas fa-lock fa-2x text-warning mb-2"></i>
+                    <small class="d-block">{% trans "CCPA" %}<br>{% trans "Compliant" %}</small>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-6 mb-3">
+                <div class="trust-badge p-3 text-center">
+                    <i class="fas fa-user-shield fa-2x text-danger mb-2"></i>
+                    <small class="d-block">{% trans "Privacy by" %}<br>{% trans "Design" %}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold">99.9%</h3>
+                    <p class="mb-0">{% trans "Uptime Guarantee" %}</p>
+                    <small class="opacity-75">{% trans "Reliable data protection" %}</small>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold">256-bit</h3>
+                    <p class="mb-0">{% trans "SSL Encryption" %}</p>
+                    <small class="opacity-75">{% trans "Bank-grade security" %}</small>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold">24/7</h3>
+                    <p class="mb-0">{% trans "Data Protection" %}</p>
+                    <small class="opacity-75">{% trans "Continuous monitoring" %}</small>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <h3 class="display-4 fw-bold">4</h3>
+                    <p class="mb-0">{% trans "Languages Supported" %}</p>
+                    <small class="opacity-75">{% trans "Global accessibility" %}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-4">
+                    {% trans "Ready to Take Control of Your Data?" %}
+                </h2>
+                <p class="lead mb-4 text-muted">
+                    {% trans "Start managing your privacy preferences and exercising your data rights today. It only takes a few minutes to secure your digital privacy." %}
+                </p>
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                    <a href="{% url 'consent_management' %}" class="btn btn-primary btn-lg px-4">
+                        <i class="fas fa-cogs me-2"></i>{% trans "Manage Cookie Preferences" %}
+                    </a>
+                    <a href="{% url 'data_request' %}" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="fas fa-download me-2"></i>{% trans "Request My Data" %}
+                    </a>
+                </div>
+                <p class="mt-3 small text-muted">
+                    <i class="fas fa-clock me-1"></i>
+                    {% trans "Process takes less than 5 minutes • No registration required" %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Recent Updates Section -->
+<section class="updates-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">
+                    <i class="fas fa-newspaper text-primary me-2"></i>
+                    {% trans "Recent Updates" %}
+                </h3>
+                <div class="update-item border-bottom pb-3 mb-3">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-success">{% trans "New" %}</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="fw-bold">{% trans "Enhanced Cookie Management" %}</h6>
+                            <p class="text-muted mb-1">{% trans "More granular control over cookie preferences with improved user interface." %}</p>
+                            <small class="text-muted">{% now "F d, Y" %}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="update-item border-bottom pb-3 mb-3">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-info">{% trans "Updated" %}</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="fw-bold">{% trans "Privacy Policy Revision" %}</h6>
+                            <p class="text-muted mb-1">{% trans "Updated to reflect new data processing activities and enhanced user rights." %}</p>
+                            <small class="text-muted">{% now "F d, Y" %}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="update-item">
+                    <div class="d-flex align-items-start">
+                        <div class="flex-shrink-0">
+                            <span class="badge bg-warning">{% trans "Feature" %}</span>
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <h6 class="fw-bold">{% trans "Multi-language Support" %}</h6>
+                            <p class="text-muted mb-1">{% trans "Now available in Arabic, English, French, and Turkish languages." %}</p>
+                            <small class="text-muted">{% now "F d, Y" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">
+                    <i class="fas fa-question-circle text-info me-2"></i>
+                    {% trans "Frequently Asked Questions" %}
+                </h3>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                {% trans "What data do you collect?" %}
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "We only collect data necessary for providing our services, including contact information, usage analytics, and cookie preferences. All data collection is based on your consent or legitimate business interests." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                {% trans "How can I delete my data?" %}
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "You can request data deletion through our Data Rights portal. We will process your request within 30 days and confirm once your data has been securely deleted from our systems." %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                {% trans "Is my data shared with third parties?" %}
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                {% trans "We do not sell your personal data. We may share data with trusted service providers who help us operate our services, but only under strict contractual obligations to protect your privacy." %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

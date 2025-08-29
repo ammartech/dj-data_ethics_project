@@ -1,0 +1,198 @@
+<!-- templates/ethics_app/base.html -->
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="{{ LANGUAGE_CODE|default:'en' }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% trans "Data Ethics Portal" %}{% endblock %}</title>
+    
+    <!-- IBM Plex Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+    <!-- Security Headers -->
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="{% if LANGUAGE_CODE == 'ar' %}rtl{% endif %}">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <div class="container">
+            <div class="d-flex justify-content-end py-2">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-language me-1"></i>
+                        {% get_current_language as CURRENT_LANGUAGE %}
+                        {% if CURRENT_LANGUAGE == 'ar' %}العربية
+                        {% elif CURRENT_LANGUAGE == 'fr' %}Français
+                        {% elif CURRENT_LANGUAGE == 'tr' %}Türkçe
+                        {% else %}English{% endif %}
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% get_available_languages as LANGUAGES %}
+                        {% for lang_code, lang_name in LANGUAGES %}
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post" class="m-0">
+                                    {% csrf_token %}
+                                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                                    <input name="language" type="hidden" value="{{ lang_code }}">
+                                    <button type="submit" class="dropdown-item {% if lang_code == CURRENT_LANGUAGE %}active{% endif %}">
+                                        {% if lang_code == 'ar' %}<i class="fas fa-flag me-2"></i>العربية
+                                        {% elif lang_code == 'fr' %}<i class="fas fa-flag me-2"></i>Français
+                                        {% elif lang_code == 'tr' %}<i class="fas fa-flag me-2"></i>Türkçe
+                                        {% else %}<i class="fas fa-flag me-2"></i>English{% endif %}
+                                    </button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+                <i class="fas fa-shield-alt me-2"></i>
+                {% trans "Data Ethics Portal" %}
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">
+                            <i class="fas fa-home me-1"></i>{% trans "Home" %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'privacy_policy' %}">
+                            <i class="fas fa-file-contract me-1"></i>{% trans "Privacy Policy" %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'consent_management' %}">
+                            <i class="fas fa-cogs me-1"></i>{% trans "Cookie Settings" %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'data_request' %}">
+                            <i class="fas fa-user-shield me-1"></i>{% trans "Data Rights" %}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner" style="display: none;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <p class="mb-2">
+                        <i class="fas fa-cookie-bite me-2"></i>
+                        {% trans "We use cookies to enhance your browsing experience and analyze our traffic. By clicking 'Accept All', you consent to our use of cookies." %}
+                    </p>
+                </div>
+                <div class="col-lg-4 text-end">
+                    <button type="button" class="btn btn-outline-light btn-sm me-2" onclick="showCookieSettings()">
+                        {% trans "Settings" %}
+                    </button>
+                    <button type="button" class="btn btn-warning btn-sm me-2" onclick="acceptEssentialCookies()">
+                        {% trans "Essential Only" %}
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm" onclick="acceptAllCookies()">
+                        {% trans "Accept All" %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="flex-grow-1">
+        {% if messages %}
+            <div class="container mt-3">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <i class="fas fa-info-circle me-2"></i>{{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-shield-alt me-2"></i>{% trans "Data Ethics Portal" %}</h5>
+                    <p class="text-muted">
+                        {% trans "Committed to protecting your privacy and ensuring ethical data practices." %}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h6>{% trans "Quick Links" %}</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'privacy_policy' %}" class="text-light text-decoration-none">
+                            <i class="fas fa-file-contract me-1"></i>{% trans "Privacy Policy" %}
+                        </a></li>
+                        <li><a href="{% url 'consent_management' %}" class="text-light text-decoration-none">
+                            <i class="fas fa-cogs me-1"></i>{% trans "Cookie Settings" %}
+                        </a></li>
+                        <li><a href="{% url 'data_request' %}" class="text-light text-decoration-none">
+                            <i class="fas fa-user-shield me-1"></i>{% trans "Data Rights" %}
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <p class="mb-0 text-muted">
+                        <i class="fas fa-copyright me-1"></i>
+                        {% now "Y" %} {% trans "Data Ethics Portal. All rights reserved." %}
+                    </p>
+                </div>
+                <div class="col-md-4 text-end">
+                    <div class="social-links">
+                        <a href="#" class="text-light me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-light me-2"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-light"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{% static 'js/consent.js' %}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

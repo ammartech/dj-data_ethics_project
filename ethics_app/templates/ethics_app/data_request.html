@@ -1,0 +1,354 @@
+<!-- templates/ethics_app/data_request.html -->
+{% extends 'ethics_app/base.html' %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block title %}{% trans "Data Subject Rights - Data Ethics Portal" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="data-request-header text-center mb-5">
+                <h1 class="display-4 fw-bold">
+                    <i class="fas fa-user-shield text-primary me-3"></i>
+                    {% trans "Exercise Your Data Rights" %}
+                </h1>
+                <p class="lead text-muted">
+                    {% trans "Under GDPR and other privacy regulations, you have rights regarding your personal data." %}
+                </p>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    {% trans "All requests are processed within 30 days as required by law. We may need to verify your identity for security purposes." %}
+                </div>
+            </div>
+            
+            {% if request.GET.success %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="fas fa-check-circle me-2"></i>
+                {% trans "Your request has been submitted successfully. We will respond within 30 days." %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endif %}
+            
+            <!-- Rights Information -->
+            <div class="rights-info mb-5">
+                <div class="row text-center mb-4">
+                    <div class="col-12">
+                        <h3 class="fw-bold">{% trans "Your Data Protection Rights" %}</h3>
+                        <p class="text-muted">{% trans "Click on any right below to learn more and submit a request" %}</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="right-card p-4 bg-light rounded h-100 shadow-sm">
+                            <div class="d-flex align-items-start">
+                                <div class="right-icon me-3">
+                                    <i class="fas fa-eye fa-2x text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4>{% trans "Right to Access" %}</h4>
+                                    <p class="text-muted mb-3">
+                                        {% trans "Request a copy of the personal data we hold about you, including how it's processed and who it's shared with." %}
+                                    </p>
+                                    <div class="small">
+                                        <strong>{% trans "You'll receive:" %}</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Complete data report" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Processing purposes" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Data sources" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-card p-4 bg-light rounded h-100 shadow-sm">
+                            <div class="d-flex align-items-start">
+                                <div class="right-icon me-3">
+                                    <i class="fas fa-edit fa-2x text-success"></i>
+                                </div>
+                                <div>
+                                    <h4>{% trans "Right to Rectification" %}</h4>
+                                    <p class="text-muted mb-3">
+                                        {% trans "Request correction of inaccurate or incomplete personal data we hold about you." %}
+                                    </p>
+                                    <div class="small">
+                                        <strong>{% trans "We can correct:" %}</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Factual inaccuracies" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Incomplete information" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Outdated details" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-card p-4 bg-light rounded h-100 shadow-sm">
+                            <div class="d-flex align-items-start">
+                                <div class="right-icon me-3">
+                                    <i class="fas fa-trash fa-2x text-danger"></i>
+                                </div>
+                                <div>
+                                    <h4>{% trans "Right to Erasure" %}</h4>
+                                    <p class="text-muted mb-3">
+                                        {% trans "Request deletion of your personal data under certain conditions (right to be forgotten)." %}
+                                    </p>
+                                    <div class="small">
+                                        <strong>{% trans "Available when:" %}</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "No longer necessary" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Consent withdrawn" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Unlawfully processed" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-card p-4 bg-light rounded h-100 shadow-sm">
+                            <div class="d-flex align-items-start">
+                                <div class="right-icon me-3">
+                                    <i class="fas fa-download fa-2x text-info"></i>
+                                </div>
+                                <div>
+                                    <h4>{% trans "Right to Portability" %}</h4>
+                                    <p class="text-muted mb-3">
+                                        {% trans "Receive your personal data in a structured, machine-readable format for transfer to another service." %}
+                                    </p>
+                                    <div class="small">
+                                        <strong>{% trans "Available formats:" %}</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li><i class="fas fa-file-code text-info me-1"></i>{% trans "JSON format" %}</li>
+                                            <li><i class="fas fa-file-excel text-info me-1"></i>{% trans "CSV format" %}</li>
+                                            <li><i class="fas fa-file-pdf text-info me-1"></i>{% trans "PDF report" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-card p-4 bg-light rounded h-100 shadow-sm">
+                            <div class="d-flex align-items-start">
+                                <div class="right-icon me-3">
+                                    <i class="fas fa-ban fa-2x text-warning"></i>
+                                </div>
+                                <div>
+                                    <h4>{% trans "Right to Object" %}</h4>
+                                    <p class="text-muted mb-3">
+                                        {% trans "Object to processing of your personal data for direct marketing, research, or legitimate interests." %}
+                                    </p>
+                                    <div class="small">
+                                        <strong>{% trans "You can object to:" %}</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Marketing communications" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Profiling activities" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Research purposes" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="right-card p-4 bg-light rounded h-100 shadow-sm">
+                            <div class="d-flex align-items-start">
+                                <div class="right-icon me-3">
+                                    <i class="fas fa-pause fa-2x text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4>{% trans "Right to Restrict" %}</h4>
+                                    <p class="text-muted mb-3">
+                                        {% trans "Request restriction of processing when accuracy is contested or processing is unlawful." %}
+                                    </p>
+                                    <div class="small">
+                                        <strong>{% trans "Processing limited to:" %}</strong>
+                                        <ul class="list-unstyled mt-2">
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Storage only" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "With your consent" %}</li>
+                                            <li><i class="fas fa-check text-success me-1"></i>{% trans "Legal claims" %}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Request Form -->
+            <div class="request-form-container bg-white p-5 rounded-3 shadow-sm border">
+                <div class="form-header mb-4">
+                    <h3 class="text-center">
+                        <i class="fas fa-paper-plane text-primary me-2"></i>
+                        {% trans "Submit a Data Request" %}
+                    </h3>
+                    <p class="text-center text-muted">
+                        {% trans "Complete the form below to exercise your data protection rights" %}
+                    </p>
+                </div>
+                
+                <form method="post" class="data-request-form">
+                    {% csrf_token %}
+                    
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="{{ form.request_type.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-list me-1"></i>{% trans "Request Type" %} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.request_type }}
+                            <div class="form-text">{% trans "Select the type of request you want to make" %}</div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="{{ form.email.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-envelope me-1"></i>{% trans "Email Address" %} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.email }}
+                            <div class="form-text">{% trans "We'll use this to communicate about your request" %}</div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <label for="{{ form.full_name.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-user me-1"></i>{% trans "Full Name" %} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.full_name }}
+                            <div class="form-text">{% trans "Your legal name as it appears in our records" %}</div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <label for="{{ form.description.id_for_label }}" class="form-label fw-bold">
+                                <i class="fas fa-comment me-1"></i>{% trans "Request Description" %} <span class="text-danger">*</span>
+                            </label>
+                            {{ form.description }}
+                            <div class="form-text">
+                                {% trans "Please provide detailed information about your request. Include any specific data or time periods if relevant." %}
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="identity-verification" required>
+                                <label class="form-check-label" for="identity-verification">
+                                    <i class="fas fa-id-card me-1"></i>
+                                    {% trans "I understand that identity verification may be required to process this request" %} <span class="text-danger">*</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="processing-time" required>
+                                <label class="form-check-label" for="processing-time">
+                                    <i class="fas fa-clock me-1"></i>
+                                    {% trans "I acknowledge that this request will be processed within 30 days" %} <span class="text-danger">*</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Important Notice -->
+                    <div class="alert alert-warning mt-4">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>{% trans "Important Information:" %}</strong>
+                        <ul class="mt-2 mb-0">
+                            <li>{% trans "We will respond to your request within 30 calendar days" %}</li>
+                            <li>{% trans "For security purposes, we may need to verify your identity" %}</li>
+                            <li>{% trans "Some requests may be subject to legal exemptions" %}</li>
+                            <li>{% trans "You will receive a confirmation email once your request is submitted" %}</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg px-5">
+                            <i class="fas fa-paper-plane me-2"></i>{% trans "Submit Request" %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Processing Information -->
+            <div class="processing-info mt-5 p-4 bg-light rounded">
+                <h4><i class="fas fa-cogs text-primary me-2"></i>{% trans "How We Process Your Request" %}</h4>
+                <p class="text-muted mb-4">{% trans "Here's what happens after you submit your data rights request:" %}</p>
+                
+                <div class="timeline mt-4">
+                    <div class="timeline-item d-flex align-items-start mb-4">
+                        <div class="timeline-badge bg-primary rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 40px; height: 40px; min-width: 40px;">
+                            <span class="text-white fw-bold">1</span>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold">{% trans "Request Received" %}</h6>
+                            <p class="text-muted mb-1">{% trans "We acknowledge receipt within 24 hours and assign a unique reference number" %}</p>
+                            <small class="text-muted">{% trans "Timeframe: Within 24 hours" %}</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item d-flex align-items-start mb-4">
+                        <div class="timeline-badge bg-info rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 40px; height: 40px; min-width: 40px;">
+                            <span class="text-white fw-bold">2</span>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold">{% trans "Identity Verification" %}</h6>
+                            <p class="text-muted mb-1">{% trans "We verify your identity using secure methods to protect your data" %}</p>
+                            <small class="text-muted">{% trans "Timeframe: 1-3 business days" %}</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item d-flex align-items-start mb-4">
+                        <div class="timeline-badge bg-warning rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 40px; height: 40px; min-width: 40px;">
+                            <span class="text-white fw-bold">3</span>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold">{% trans "Request Processing" %}</h6>
+                            <p class="text-muted mb-1">{% trans "Our data protection team processes your request and compiles the necessary information" %}</p>
+                            <small class="text-muted">{% trans "Timeframe: Up to 25 days" %}</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item d-flex align-items-start">
+                        <div class="timeline-badge bg-success rounded-circle d-flex align-items-center justify-content-center me-4" style="width: 40px; height: 40px; min-width: 40px;">
+                            <span class="text-white fw-bold">4</span>
+                        </div>
+                        <div>
+                            <h6 class="fw-bold">{% trans "Response Delivered" %}</h6>
+                            <p class="text-muted mb-1">{% trans "We provide you with the requested information or confirmation of action taken" %}</p>
+                            <small class="text-muted">{% trans "Timeframe: Within 30 days of initial request" %}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="contact-info mt-5 p-4 bg-white rounded shadow-sm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-headset text-primary me-2"></i>{% trans "Need Help?" %}</h5>
+                        <p class="text-muted">{% trans "If you have questions about your data rights or need assistance with your request:" %}</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-envelope text-success me-2"></i><strong>Email:</strong> dpo@dataethics.local</li>
+                            <li><i class="fas fa-phone text-info me-2"></i><strong>Phone:</strong> +1-800-DATA-HELP</li>
+                            <li><i class="fas fa-clock text-warning me-2"></i><strong>Hours:</strong> Mon-Fri 9AM-5PM UTC</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-balance-scale text-success me-2"></i>{% trans "Regulatory Information" %}</h5>
+                        <p class="text-muted">{% trans "If you're not satisfied with our response, you can contact your local data protection authority:" %}</p>
+                        <ul class="list-unstyled small">
+                            <li><i class="fas fa-globe me-2"></i><strong>EU:</strong> Your national DPA</li>
+                            <li><i class="fas fa-flag-usa me-2"></i><strong>US:</strong> State Attorney General</li>
+                            <li><i class="fas fa-flag me-2"></i><strong>UK:</strong> ICO (ico.org.uk)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

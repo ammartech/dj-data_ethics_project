@@ -1,0 +1,300 @@
+<!-- templates/ethics_app/privacy_policy.html -->
+{% extends 'ethics_app/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Privacy Policy - Data Ethics Portal" %}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="privacy-policy-header text-center mb-5">
+                <h1 class="display-4 fw-bold">
+                    <i class="fas fa-file-contract text-primary me-3"></i>
+                    {% trans "Privacy Policy" %}
+                </h1>
+                <p class="lead text-muted">
+                    {% trans "Last updated: " %}
+                    {% if policy %}{{ policy.effective_date|date:"F d, Y" }}{% else %}{% now "F d, Y" %}{% endif %}
+                </p>
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    {% trans "This privacy policy explains how we collect, use, and protect your personal information in compliance with GDPR and other privacy regulations." %}
+                </div>
+            </div>
+            
+            <div class="privacy-content bg-light p-4 rounded-3">
+                {% if policy %}
+                    <div class="policy-content">
+                        {{ policy.content|safe }}
+                    </div>
+                {% else %}
+                    <!-- Default Privacy Policy Content -->
+                    <div class="policy-section mb-5">
+                        <h2><i class="fas fa-info-circle text-primary me-2"></i>{% trans "Information We Collect" %}</h2>
+                        <p class="lead">{% trans "We collect information you provide directly to us, information we collect automatically when you use our services, and information from third parties." %}</p>
+                        
+                        <div class="row g-4 mt-3">
+                            <div class="col-md-6">
+                                <div class="info-card p-4 bg-white rounded shadow-sm h-100">
+                                    <h4 class="text-primary">
+                                        <i class="fas fa-user me-2"></i>{% trans "Personal Information" %}
+                                    </h4>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Name and contact information" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Account credentials" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Communications with us" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Payment information (if applicable)" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Identity verification documents" %}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="info-card p-4 bg-white rounded shadow-sm h-100">
+                                    <h4 class="text-info">
+                                        <i class="fas fa-robot me-2"></i>{% trans "Automatically Collected Information" %}
+                                    </h4>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Device and browser information" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Usage patterns and preferences" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "IP address and location data" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Cookies and tracking technologies" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Log files and analytics data" %}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="policy-section mb-5">
+                        <h2><i class="fas fa-cogs text-success me-2"></i>{% trans "How We Use Your Information" %}</h2>
+                        <p class="lead">{% trans "We use your information to provide, maintain, and improve our services, communicate with you, and comply with legal obligations." %}</p>
+                        
+                        <div class="row g-4 mt-3">
+                            <div class="col-lg-4">
+                                <div class="usage-card p-4 bg-white rounded shadow-sm text-center h-100">
+                                    <i class="fas fa-server fa-3x text-primary mb-3"></i>
+                                    <h5>{% trans "Service Provision" %}</h5>
+                                    <p class="text-muted">{% trans "Operating and maintaining our platform, processing transactions, and providing customer support." %}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="usage-card p-4 bg-white rounded shadow-sm text-center h-100">
+                                    <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                                    <h5>{% trans "Service Improvement" %}</h5>
+                                    <p class="text-muted">{% trans "Analyzing usage patterns, developing new features, and enhancing user experience." %}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="usage-card p-4 bg-white rounded shadow-sm text-center h-100">
+                                    <i class="fas fa-envelope fa-3x text-info mb-3"></i>
+                                    <h5>{% trans "Communication" %}</h5>
+                                    <p class="text-muted">{% trans "Sending important updates, responding to inquiries, and providing relevant information." %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="policy-section mb-5">
+                        <h2><i class="fas fa-share-alt text-warning me-2"></i>{% trans "Information Sharing" %}</h2>
+                        <p class="lead">{% trans "We do not sell your personal information. We may share information in limited circumstances as described in this policy." %}</p>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>{% trans "Important:" %}</strong> {% trans "We never sell or rent your personal data to third parties for marketing purposes." %}
+                        </div>
+                        
+                        <div class="sharing-scenarios mt-4">
+                            <h4>{% trans "We may share your information in these limited circumstances:" %}</h4>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <i class="fas fa-tools text-primary me-2"></i>
+                                    <strong>{% trans "Service Providers:" %}</strong> {% trans "With trusted third-party services that help us operate our platform" %}
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-balance-scale text-success me-2"></i>
+                                    <strong>{% trans "Legal Requirements:" %}</strong> {% trans "When required by law or to protect our legal rights" %}
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-handshake text-info me-2"></i>
+                                    <strong>{% trans "Business Transfers:" %}</strong> {% trans "In connection with a merger, acquisition, or sale of assets" %}
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fas fa-user-check text-warning me-2"></i>
+                                    <strong>{% trans "With Your Consent:" %}</strong> {% trans "When you explicitly agree to share information" %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="policy-section mb-5">
+                        <h2><i class="fas fa-user-shield text-info me-2"></i>{% trans "Your Rights" %}</h2>
+                        <p class="lead">{% trans "You have rights regarding your personal information, including access, rectification, erasure, and portability." %}</p>
+                        
+                        <div class="rights-grid mt-4">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="right-item p-3 bg-white rounded shadow-sm">
+                                        <h5><i class="fas fa-eye text-primary me-2"></i>{% trans "Right to Access" %}</h5>
+                                        <p class="text-muted mb-0">{% trans "Request a copy of your personal data we hold" %}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="right-item p-3 bg-white rounded shadow-sm">
+                                        <h5><i class="fas fa-edit text-success me-2"></i>{% trans "Right to Rectification" %}</h5>
+                                        <p class="text-muted mb-0">{% trans "Request correction of inaccurate information" %}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="right-item p-3 bg-white rounded shadow-sm">
+                                        <h5><i class="fas fa-trash text-danger me-2"></i>{% trans "Right to Erasure" %}</h5>
+                                        <p class="text-muted mb-0">{% trans "Request deletion of your personal data" %}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="right-item p-3 bg-white rounded shadow-sm">
+                                        <h5><i class="fas fa-download text-info me-2"></i>{% trans "Right to Portability" %}</h5>
+                                        <p class="text-muted mb-0">{% trans "Receive your data in a portable format" %}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="right-item p-3 bg-white rounded shadow-sm">
+                                        <h5><i class="fas fa-ban text-warning me-2"></i>{% trans "Right to Object" %}</h5>
+                                        <p class="text-muted mb-0">{% trans "Object to processing of your data" %}</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="right-item p-3 bg-white rounded shadow-sm">
+                                        <h5><i class="fas fa-pause text-secondary me-2"></i>{% trans "Right to Restrict" %}</h5>
+                                        <p class="text-muted mb-0">{% trans "Request restriction of data processing" %}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-4">
+                            <a href="{% url 'data_request' %}" class="btn btn-primary btn-lg">
+                                <i class="fas fa-arrow-right me-2"></i>{% trans "Exercise Your Rights" %}
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="policy-section mb-5">
+                        <h2><i class="fas fa-lock text-success me-2"></i>{% trans "Data Security" %}</h2>
+                        <p class="lead">{% trans "We implement appropriate technical and organizational measures to protect your personal information." %}</p>
+                        
+                        <div class="row g-4 mt-3">
+                            <div class="col-lg-6">
+                                <div class="security-measure p-4 bg-white rounded shadow-sm h-100">
+                                    <i class="fas fa-shield-alt fa-3x text-success mb-3"></i>
+                                    <h4>{% trans "Technical Safeguards" %}</h4>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "256-bit SSL encryption" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Regular security updates" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Secure data centers" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Access controls" %}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="security-measure p-4 bg-white rounded shadow-sm h-100">
+                                    <i class="fas fa-users fa-3x text-info mb-3"></i>
+                                    <h4>{% trans "Organizational Measures" %}</h4>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Staff training programs" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Regular security audits" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Incident response procedures" %}</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>{% trans "Data breach protocols" %}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="policy-section mb-5">
+                        <h2><i class="fas fa-clock text-warning me-2"></i>{% trans "Data Retention" %}</h2>
+                        <p class="lead">{% trans "We retain your personal information only as long as necessary for the purposes outlined in this policy." %}</p>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            {% trans "We automatically delete personal data that is no longer needed for business or legal purposes." %}
+                        </div>
+                        
+                        <div class="retention-periods mt-4">
+                            <h4>{% trans "Typical Retention Periods:" %}</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>{% trans "Data Type" %}</th>
+                                            <th>{% trans "Retention Period" %}</th>
+                                            <th>{% trans "Legal Basis" %}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{% trans "Account Information" %}</td>
+                                            <td>{% trans "Duration of account + 2 years" %}</td>
+                                            <td>{% trans "Contractual necessity" %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Transaction Records" %}</td>
+                                            <td>{% trans "7 years" %}</td>
+                                            <td>{% trans "Legal compliance" %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Marketing Consents" %}</td>
+                                            <td>{% trans "Until withdrawn" %}</td>
+                                            <td>{% trans "Consent" %}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>{% trans "Analytics Data" %}</td>
+                                            <td>{% trans "26 months" %}</td>
+                                            <td>{% trans "Legitimate interest" %}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="policy-section mb-5">
+                        <h2><i class="fas fa-globe text-primary me-2"></i>{% trans "International Transfers" %}</h2>
+                        <p class="lead">{% trans "We may transfer your data to countries outside your region with appropriate safeguards in place." %}</p>
+                        
+                        <div class="alert alert-warning">
+                            <i class="fas fa-plane me-2"></i>
+                            {% trans "Any international transfers are conducted with adequate protection measures including standard contractual clauses and adequacy decisions." %}
+                        </div>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h2><i class="fas fa-envelope text-info me-2"></i>{% trans "Contact Information" %}</h2>
+                        <p class="lead">{% trans "If you have any questions about this privacy policy, please contact us." %}</p>
+                        
+                        <div class="row g-4 mt-3">
+                            <div class="col-md-6">
+                                <div class="contact-card p-4 bg-white rounded shadow-sm text-center">
+                                    <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
+                                    <h5>{% trans "Data Protection Officer" %}</h5>
+                                    <p class="text-muted">dpo@dataethics.local</p>
+                                    <p class="text-muted">{% trans "For privacy-related inquiries" %}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="contact-card p-4 bg-white rounded shadow-sm text-center">
+                                    <i class="fas fa-headset fa-3x text-success mb-3"></i>
+                                    <h5>{% trans "General Support" %}</h5>
+                                    <p class="text-muted">support@dataethics.local</p>
+                                    <p class="text-muted">{% trans "For general questions" %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
